@@ -51,12 +51,15 @@ for i in range(len(name)):
     print(name[i])
 
     range() এর Syntax
+
 range(stop)
 শুধু ১টা parameter দিলে সেটা stop হিসেবে কাজ করে।
 Python ধরে নেয়: start = 0, step = 1
+
 range(start, stop)
 ২টা parameter দিলে প্রথমটি start, দ্বিতীয়টি stop।
 Python ধরে নেয়: step = 1
+
 range(start, stop, step)
 ৩টা parameter দিলে যথাক্রমে start, stop, step হিসেবে কাজ করে।
 তোমার কোডে কী হয়েছে?
@@ -174,3 +177,34 @@ reverse_and_separate(456)
 
 1. **List Comprehension:** সাধারণ `for` লুপের চেয়ে এটি অনেক বেশি ফাস্ট এবং মেমরি এফিশিয়েন্ট।
 2. **`enumerate()` & `zip()` Functions:** ইনডেক্স ট্র্যাকিং এবং একাধিক লিস্টের ওপর একসাথে লুপ চালানোর জন্য প্রফেশনালরা এগুলো ব্যবহার করেন।
+
+
+
+For Loop questions
+
+- Accept an integer and Print hello world n times
+  
+- Print natural number up to n
+
+- Reverse for loop. Print n to 1
+- Take a number as input and print its table
+- Sum up to n terms
+- Factorial of a number
+- Print the sum of all even & odd numbers in a range
+separately
+- Print all the factors of a number
+- Accept a number and check if it a perfect number or not.
+A number whose sum of factors is equal to the number itself
+Ex - 6 = 1, 2, 3 = 
+- Check wether the number is prime or not
+
+- Reverse a string without using in build functions.4
+- Check string is Pallindrome or not
+- Count all letters, digits, and special symbols from a given
+string
+Given: str1 = "P@#yn26at^&i5ve"
+Expected Outcome:
+Total counts of chars, digits, and symbols
+Chars = 8
+Digits = 3
+Symbol = 4
