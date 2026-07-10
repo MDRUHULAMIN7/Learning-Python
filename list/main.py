@@ -48,8 +48,19 @@ fruits = ['apple', 'banana', 'cherry', 'mango', 'grape']
 
 # print(matrix[2][2])
 
-numbers = [3, -1, 7, -5, 2, -8, 9, 0]
+# numbers = [3, -1, 7, -5, 2, -8, 9, 0]
 
-positives = [x for x in numbers if x > 0]
+# positives = [x for x in numbers if x > 0]
 
-print(positives)
+# print(positives)
+numbers = [3, 1, 7, 2, 9, 4]
+
+# mean = sum(numbers) // len(numbers)
+# print(mean)
+
+# greatest = max(numbers)
+# index_greatest = numbers.index(greatest)
+
+# print(greatest,
+      
+#       index_greatest)
