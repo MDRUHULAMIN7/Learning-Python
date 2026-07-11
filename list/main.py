@@ -53,7 +53,7 @@ fruits = ['apple', 'banana', 'cherry', 'mango', 'grape']
 # positives = [x for x in numbers if x > 0]
 
 # print(positives)
-numbers = [3, 1, 7, 2, 9, 4]
+# numbers = [3, 1, 7, 2, 9, 4]
 
 # mean = sum(numbers) // len(numbers)
 # print(mean)
@@ -64,3 +64,13 @@ numbers = [3, 1, 7, 2, 9, 4]
 # print(greatest,
       
 #       index_greatest)
+
+numbers = [3, 1, 7, 2, 9, 4]
+
+# sorted_numbers = sorted(set(numbers) , reverse=True)
+
+# print("Second Greatest Number",sorted_numbers[1])
+
+first_max = max(numbers)
+second_max = max(x for x in numbers if x != first_max )
+print(second_max)
