@@ -71,6 +71,19 @@ numbers = [3, 1, 7, 2, 9, 4]
 
 # print("Second Greatest Number",sorted_numbers[1])
 
-first_max = max(numbers)
-second_max = max(x for x in numbers if x != first_max )
-print(second_max)
+# first_max = max(numbers)
+# second_max = max(x for x in numbers if x != first_max )
+# print(second_max)
+
+# def is_sorted(lst):
+#     for i in range(len(lst)-1):
+#         if lst[i] >= lst[i+1]:
+#             return False
+#     return True
+
+def is_sorted(lst):
+    # প্রতিটি element তার পরেরটির চেয়ে ছোট বা সমান কিনা
+    return all(lst[i] <= lst[i+1] for i in range(len(lst)-1))
+
+print(is_sorted([1,2,3]))
+

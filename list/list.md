@@ -317,6 +317,84 @@ print(is_sorted([1, 2, 3, 4, 5]))   # True
 print(is_sorted([1, 3, 2, 4, 5]))   # False
 print(is_sorted([5, 4, 3, 2, 1]))   # False
 
+
+
+Step by Step Breakdown
+Step 1: range(len(lst)-1)
+ধরো lst = [1, 3, 5, 4], তাহলে len(lst) = 4।
+এখানে range(len(lst)-1) মানে range(3) → এটা দেয় 0, 1, 2।
+কেন -1 করা হলো? কারণ আমরা প্রতিটা element কে তার পরের element এর সাথে compare করছি (lst[i] vs lst[i+1])। শেষ element এর পরে আর কিছু নাই, তাই শেষ index পর্যন্ত যাওয়ার দরকার নাই। এটা না করলে IndexError হতো (out of range)।
+Step 2: Generator expression — lst[i] <= lst[i+1] for i in range(...)
+এই অংশটা প্রতিটা i এর জন্য একটা করে True/False তৈরি করে।
+আমাদের example [1, 3, 5, 4] দিয়ে dry run করি:
+ilst[i]lst[i+1]lst[i] <= lst[i+1]Result0131 <= 3True1353 <= 5True2545 <= 4False
+তাহলে generator টা produce করছে: True, True, False
+Step 3: all(...)
+all() function তখনই True return করে যখন সবগুলো element True হয়। একটাও False থাকলে পুরোটাই False হয়ে যায়।
+এখানে যেহেতু False একটা আছে (index 2 এ), তাই:
+pythonis_sorted([1, 3, 5, 4])  # False
+আরেকটা example (sorted list দিয়ে)
+pythonlst = [1, 2, 2, 8]
+ilst[i]lst[i+1]Result012True122True (কারণ <=, == হলেও ঠিক আছে)228True
+সব True, তাই all() → True
+pythonis_sorted([1, 2, 2, 8])  # True
+Edge case: খালি বা এক-element list
+pythonis_sorted([])   # True (empty list, range(-1) → কিছুই iterate হয় না, all([]) = True by default)
+is_sorted([5])  # True (range(0), same reason)
+all() এর একটা default behavior আছে — কোনো element না থাকলেও এটা True return করে (vacuous truth)।
+সারসংক্ষেপ (Summary)
+এই এক লাইনের ফাংশনটা আসলে একটা loop-এর কাজ করছে compact ভাবে — প্রতিটা consecutive pair (lst[i], lst[i+1]) compare করে দেখছে ascending order মেনে চলছে কিনা, আর all() দিয়ে সবগুলো condition একসাথে check করছে।
+হ্যাঁ, এটার কয়েকটা official নাম/টার্ম আছে। একসাথে ভেঙে বলি:
+
+## ১. মূল syntax টার নাম: **Generator Expression**
+
+```python
+lst[i] <= lst[i+1] for i in range(len(lst)-1)
+```
+
+এই অংশটাকে বলে **generator expression** (সংক্ষেপে **genexp**)। এটা list comprehension এর মতোই দেখতে, কিন্তু `[ ]` bracket এর বদলে কোনো bracket ছাড়াই (বা `( )` দিয়ে) লেখা হয়, আর এটা মেমোরিতে পুরো list বানায় না — বরং **lazily**, এক এক করে value **yield** করে।
+
+তুলনা করলে:
+
+```python
+[lst[i] <= lst[i+1] for i in range(len(lst)-1)]   # List comprehension → পুরো list মেমোরিতে বানায়
+   (lst[i] <= lst[i+1] for i in range(len(lst)-1)) # Generator expression → lazy, on-demand value দেয়
+```
+
+## ২. এই প্যাটার্নের broader নাম: **Short-Circuit Evaluation with `all()`/`any()`**
+
+`all()` function টা internally একটা loop চালায়, কিন্তু এটা **short-circuit** করে — মানে প্রথম `False` পেলেই বাকি সব বাদ দিয়ে সাথে সাথে `False` return করে দেয় (পুরো generator শেষ পর্যন্ত iterate করে না)।
+
+এই behavior-টাকে বলে **short-circuit evaluation**।
+
+## ৩. পুরো প্যাটার্নটার common নাম: **Declarative / Functional Iteration**
+
+তুমি normally যেভাবে explicit `for` loop লিখো:
+
+```python
+result = True
+for i in range(len(lst)-1):
+    if lst[i] > lst[i+1]:
+        result = False
+        break
+```
+
+...এটাকে বলে **imperative style** — step by step কি করতে হবে সেটা বলে দেওয়া।
+
+আর `all(genexp)` এর মতো লেখাকে বলে **declarative/functional style** — কি চাই সেটা বলে দেওয়া, কিভাবে করবে সেটা Python নিজে handle করে। এই style টা আসছে **functional programming** থেকে (Haskell, Lisp এর মতো ভাষা থেকে inspired)।
+
+## সংক্ষেপে টার্মগুলো
+
+| টার্ম | কী বোঝায় |
+|---|---|
+| **Generator Expression** | `(x for x in iterable)` syntax টার নাম |
+| **Lazy Evaluation** | মেমোরিতে সব একসাথে না বানিয়ে, দরকার হলে তখনই value বানানো |
+| **Short-circuit evaluation** | `all()`/`any()` এর early-exit behavior |
+| **Functional/Declarative style** | overall approach — "কি চাই" বলা, "কিভাবে" না বলা |
+
+চাইলে একই জিনিস `any()` দিয়েও করা যায় (উল্টো logic দিয়ে) 
+
+
 # Descending sorted check:
 print(sorted([1, 2, 3]) == [1, 2, 3])              # True — ascending?
 print(sorted([5, 4, 3], reverse=True) == [5, 4, 3]) # True — descending?
