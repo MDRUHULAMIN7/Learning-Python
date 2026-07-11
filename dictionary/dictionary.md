@@ -232,7 +232,7 @@ print(freq)   # Counter({'apple': 3, 'banana': 2, 'cherry': 1})
 print(freq.most_common(2))   # সবচেয়ে বেশি 2টি
 ```
 
-### Common Keys ঎র Values যোগ করা
+### Common Keys র Values যোগ করা
 
 ```
 d1 = {'a': 1, 'b': 2, 'c': 3}
