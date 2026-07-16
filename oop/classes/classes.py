@@ -36,27 +36,27 @@
 # print(s2.college)
 # print(s1.college)
 
-class Person:                     # Class definition
-    species = 'Human'             # Class Attribute
+# class Person:                     # Class definition
+#     species = 'Human'             # Class Attribute
 
-    def __init__(self, name):     # Constructor / Instance Attribute
-        self.name = name
+#     def __init__(self, name):     # Constructor / Instance Attribute
+#         self.name = name
 
-    def greet(self):              # Instance Method
-        print(f'হ্যালো, আমি {self.name}')
+#     def greet(self):              # Instance Method
+#         print(f'হ্যালো, আমি {self.name}')
 
-    @classmethod
-    def info(cls):                # Class Method
-        print(f'Species: {cls.species}')
+#     @classmethod
+#     def info(cls):                # Class Method
+#         print(f'Species: {cls.species}')
 
-    @staticmethod
-    def utility():                # Static Method
-        print('Utility function')
+#     @staticmethod
+#     def utility():                # Static Method
+#         print('Utility function')
 
-# Object তৈরি ও ব্যবহার
-p = Person('Ruhul')
-p.greet()            # হ্যালো, আমি Ruhul
-Person.info()        # Species: Human
-Person.utility()     # Utility function
-print(p.name)        # Ruhul
-print(Person.species) # Human
+# # Object তৈরি ও ব্যবহার
+# p = Person('Ruhul')
+# p.greet()            # হ্যালো, আমি Ruhul
+# Person.info()        # Species: Human
+# Person.utility()     # Utility function
+# print(p.name)        # Ruhul
+# print(Person.species) # Human
