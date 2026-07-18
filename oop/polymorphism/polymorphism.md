@@ -31,7 +31,7 @@ class Animal:
 
 class Dog(Animal):
     def sound(self):
-        print("Dog barks")
+        print("Dog barks") 
 
 class Cat(Animal):
     def sound(self):
@@ -60,7 +60,7 @@ for animal in animals:
 # ৪. Duck Typing — Python-এর মূল দর্শন
 
 * **Philosophy:** *"If it walks like a duck and quacks like a duck, then it's a duck."*
-* Python Object-এর **Type** দেখে না, বরং প্রয়োজনীয় **Method** আছে কিনা সেটি দেখে।
+*Python-এ Duck Typing মানে: object-এর টাইপ দেখে না, সেটা যে মেথডটা আছে কিনা দেখে।
 
 ```python
 class Duck:
