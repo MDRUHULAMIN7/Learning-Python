@@ -68,8 +68,8 @@ print(unique)   # {1, 2, 3, 4}
 
 ## ৫. কখন Comprehension ব্যবহার করবে?
 
-| পরিস্থিতি | করণীয় |
-| --- | --- |
+| পরিস্থিতি                 | করণীয় |
+| ----------------------  | --- |
 | Simple transform/filter | Comprehension ব্যবহার করো |
 | জটিল বহু-step logic | Regular loop — পড়তে সহজ |
 | Nested comprehension বেশি গভীর | Loop ব্যবহার করো |
